@@ -15,5 +15,12 @@
     <modules>
         <module>spring-storage-sharding-sphere</module>
     </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.dangdang</groupId>
+            <artifactId>spring-common</artifactId>
+            <version>3.0.0.0</version>
+        </dependency>
+    </dependencies>
 
 </project>
