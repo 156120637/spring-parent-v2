@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-blog</module>
+        <module>spring-admin</module>
     </modules>
 
     <dependencies>

@@ -1,7 +1,7 @@
 package com.dangdang.api.controller;
 
-import com.dangdang.biz.dto.LoginForm;
-import com.dangdang.biz.service.LoginService;
+import com.dangdang.api.dto.LoginForm;
+import com.dangdang.api.service.LoginService;
 import com.dangdang.common.exception.BaseException;
 import com.dangdang.common.utils.ValidateUtils;
 import com.dangdang.common.utils.controller.BaseController;
