@@ -18,6 +18,17 @@
 
     <!-- customer -->
     <!-- 主库 -->
+    <!--
+
+        数据库连接池可以使用高效率的 springboot v2.0 的
+            com.zaxxer.hikari.HikariDataSource
+            可以点进去看配置项  HikariDataSource  主要来源于 com.zaxxer.hikari.HikariConfig
+                    可以根据其中的配置项配置相关连接池的参数。
+        这个连接池也是springboot2.0使用的数据库连接池
+
+
+
+    -->
     <bean id="ds_customer_m_0" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
         <property name="driverClassName" value="${customer_00_master_jdbc.driver}"/>
         <property name="url" value="${customer_00_master_jdbc.url}"/>
@@ -213,7 +224,26 @@
         <property name="validationQuery" value="${customer_07_slave_jdbc.validationQuery}"/>
     </bean>
 
-    <bean id="randomStrategy" class="org.apache.shardingsphere.core.strategy.masterslave.RandomMasterSlaveLoadBalanceAlgorithm" />
+
+    <!--
+        主从的均衡算法可以点进去
+            org.apache.shardingsphere.spi.masterslave.MasterSlaveLoadBalanceAlgorithm 这个类看相关的实现
+                目前来说实现有：
+                        org.apache.shardingsphere.spi.masterslave.MasterSlaveLoadBalanceAlgorithm
+                        org.apache.shardingsphere.spi.masterslave.MasterSlaveLoadBalanceAlgorithm
+                        或者参考这两个实现类自己实现主从的均衡策略
+
+    -->
+    <bean id="randomStrategy" class="org.apache.shardingsphere.core.strategy.masterslave.RandomMasterSlaveLoadBorg.apache.shardingsphere.spi.masterslave.MasterSlaveLoadBalanceAlgorithmalanceAlgorithm" />
+
+
+    <!--
+        分表策略： 使用inline表达式的方式配置，也可实现相关类自行决定分表算法
+
+    -->
+    <sharding:inline-strategy id="databaseStrategy" sharding-column="cust_id" algorithm-expression="ds_ms_${cust_id.longValue()%8}" />
+
+
 
     <!-- 主从配置 -->
     <sharding:master-slave-rule id="ds_ms_0" master-data-source-name="ds_customer_m_0" slave-data-source-names="ds_customer_s_0" strategy-ref="randomStrategy" />
@@ -225,7 +255,6 @@
     <sharding:master-slave-rule id="ds_ms_6" master-data-source-name="ds_customer_m_6" slave-data-source-names="ds_customer_s_6" strategy-ref="randomStrategy" />
     <sharding:master-slave-rule id="ds_ms_7" master-data-source-name="ds_customer_m_7" slave-data-source-names="ds_customer_s_7" strategy-ref="randomStrategy" />
 
-    <sharding:inline-strategy id="databaseStrategy" sharding-column="cust_id" algorithm-expression="ds_ms_${cust_id.longValue()%8}" />
 
     <sharding:data-source id="shardingDataSource">
         <sharding:sharding-rule data-source-names="ds_customer_m_0,ds_customer_m_1,ds_customer_m_2,ds_customer_m_3,ds_customer_m_4,ds_customer_m_5,ds_customer_m_6,ds_customer_m_7,ds_customer_s_0,ds_customer_s_1,ds_customer_s_2,ds_customer_s_3,ds_customer_s_4,ds_customer_s_5,ds_customer_s_6,ds_customer_s_7">

@@ -48,12 +48,6 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- spring-boot（未使用作业云） -->
-            <dependency>
-                <groupId>com.github.kuhn-he</groupId>
-                <artifactId>elastic-job-lite-spring-boot-starter</artifactId>
-                <version>2.1.53</version>
-            </dependency>
 
             <!-- storage模块依赖的jar包 -->
             <dependency>
@@ -85,6 +79,12 @@
                 <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
                 <version>${sharding-sphere.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-core</artifactId>
+                <version>${sharding-sphere.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.apache.shardingsphere</groupId>
                 <artifactId>sharding-jdbc-spring-namespace</artifactId>
