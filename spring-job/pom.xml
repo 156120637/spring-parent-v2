@@ -13,7 +13,8 @@
     <packaging>pom</packaging>
 
     <modules>
-
+		<module>spring-elastic-jar</module>
+		<module>spring-elastic-tar</module>
     </modules>
 
 </project>

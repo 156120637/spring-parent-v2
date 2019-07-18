@@ -234,7 +234,7 @@
                         或者参考这两个实现类自己实现主从的均衡策略
 
     -->
-    <bean id="randomStrategy" class="org.apache.shardingsphere.core.strategy.masterslave.RandomMasterSlaveLoadBorg.apache.shardingsphere.spi.masterslave.MasterSlaveLoadBalanceAlgorithmalanceAlgorithm" />
+    <bean id="randomStrategy" class="org.apache.shardingsphere.spi.masterslave.MasterSlaveLoadBalanceAlgorithm" />
 
 
     <!--
