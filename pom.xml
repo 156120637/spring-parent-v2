@@ -267,7 +267,7 @@
                 <version>2.1.5.RELEASE</version>
             </dependency>
 
-
+            <!-- dangdang elastic-job -->
             <dependency>
                 <groupId>com.dangdang</groupId>
                 <artifactId>elastic-job-core</artifactId>
@@ -278,6 +278,15 @@
                 <artifactId>elastic-job-lite-spring-boot-starter</artifactId>
                 <version>2.1.5</version>
             </dependency>
+
+            <!-- xxl-job -->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>2.1.0</version>
+            </dependency>
+
+
 
         </dependencies>
     </dependencyManagement>

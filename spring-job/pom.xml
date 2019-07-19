@@ -15,6 +15,7 @@
     <modules>
 		<module>spring-elastic-jar</module>
 		<module>spring-elastic-tar</module>
+		<module>spring-job-xxl</module>
     </modules>
 
 </project>
